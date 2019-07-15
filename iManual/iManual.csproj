@@ -169,19 +169,34 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainCategoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageErrorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="Helper\HelperFunction.cs" />
+    <Compile Include="Helper\HelperTester.cs" />
+    <Compile Include="Helper\JsonNetResult.cs" />
     <Compile Include="Migrations\201907150658044_firstmigration.cs" />
     <Compile Include="Migrations\201907150658044_firstmigration.Designer.cs">
       <DependentUpon>201907150658044_firstmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907151608438_artical_category.cs" />
+    <Compile Include="Migrations\201907151608438_artical_category.Designer.cs">
+      <DependentUpon>201907151608438_artical_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907151651394_artical_category1.cs" />
+    <Compile Include="Migrations\201907151651394_artical_category1.Designer.cs">
+      <DependentUpon>201907151651394_artical_category1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomizeAuthorize.cs" />
     <Compile Include="Models\CustomizeRole.cs" />
+    <Compile Include="Models\Domains\Article.cs" />
+    <Compile Include="Models\Domains\ArticleContent.cs" />
     <Compile Include="Models\Domains\MainCategory.cs" />
     <Compile Include="Models\Domains\SubCategory.cs" />
     <Compile Include="Models\EnumBase\EnumBase.cs" />
@@ -189,6 +204,7 @@
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserInformation.cs" />
+    <Compile Include="Models\ViewModels\MainCategory\CreateMainCategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -247,6 +263,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MainCategory\Create.cshtml" />
+    <Content Include="Views\MainCategory\Delete.cshtml" />
+    <Content Include="Views\MainCategory\Details.cshtml" />
+    <Content Include="Views\MainCategory\Edit.cshtml" />
+    <Content Include="Views\MainCategory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -263,6 +284,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907150658044_firstmigration.resx">
       <DependentUpon>201907150658044_firstmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907151608438_artical_category.resx">
+      <DependentUpon>201907151608438_artical_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907151651394_artical_category1.resx">
+      <DependentUpon>201907151651394_artical_category1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

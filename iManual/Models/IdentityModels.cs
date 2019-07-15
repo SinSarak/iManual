@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using iManual.Models.Domains;
 
 namespace iManual.Models
 {
@@ -40,5 +41,9 @@ namespace iManual.Models
         }
 
         public DbSet<UserInformation> UserInformations { get; set; }
+        public DbSet<MainCategory> MainCategorys { get; set; }
+        public DbSet<SubCategory> SubCategorys { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleContent> ArticleContents { get; set; }
     }
 }

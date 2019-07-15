@@ -20,11 +20,11 @@ namespace iManual.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            context.Roles.AddOrUpdate(
-              p => p.Id,
-              new ApplicationRole { Name = "Admin" },
-              new ApplicationRole { Name = "Employee" }
-            );
+            //context.Roles.AddOrUpdate(
+            //  p => p.Id,
+            //  new ApplicationRole { Name = "Admin" },
+            //  new ApplicationRole { Name = "Employee" }
+            //);
         }
     }
 }
