@@ -12,13 +12,30 @@ using iManual.Models.Domains;
 using iManual.Models.ViewModels.MainCategory;
 using iManual.Helper;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace iManual.Controllers
 {
     public class MainCategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
 
+        public MainCategoryController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: MainCategory
         public async Task<ActionResult> Index()
         {
@@ -78,11 +95,17 @@ namespace iManual.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             MainCategory mainCategory = await db.MainCategorys.FindAsync(id);
+            var model = new EditMainCategoryViewModel();
             if (mainCategory == null)
             {
                 return HttpNotFound();
+            }else
+            {
+                model.Id = mainCategory.Id;
+                model.Name = mainCategory.Name;
+                model.Active = mainCategory.Active;
             }
-            return View(mainCategory);
+            return View(model);
         }
 
         // POST: MainCategory/Edit/5
@@ -90,11 +113,19 @@ namespace iManual.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Active,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy")] MainCategory mainCategory)
+        public async Task<ActionResult> Edit(EditMainCategoryModel mainCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mainCategory).State = EntityState.Modified;
+                var dbMainCategory = await db.MainCategorys.SingleOrDefaultAsync(p=>p.Id == mainCategory.Id);
+                if(dbMainCategory != null)
+                {
+                    dbMainCategory.Name = mainCategory.Name.TrimNullable();
+                    dbMainCategory.Active = mainCategory.Active;
+                    dbMainCategory.ModifiedBy = User.Identity.GetUserId();
+                    dbMainCategory.ModifiedDate = DateTime.Now;
+                }
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -109,11 +140,26 @@ namespace iManual.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             MainCategory mainCategory = await db.MainCategorys.FindAsync(id);
+            var model = new  DeleleMainCategoryViewModel();
             if (mainCategory == null)
             {
                 return HttpNotFound();
+            }else
+            {
+                model.Id = mainCategory.Id;
+                model.Name = mainCategory.Name;
+                model.Active = model.Active;
+                model.CreatedDate = model.CreatedDate;
+                model.ModifiedDate = model.ModifiedDate;
+
+                var dbUserCreater =await UserManager.FindByIdAsync(mainCategory.CreatedBy);
+                model.CreatedBy = dbUserCreater != null ? dbUserCreater.UserInformation.Accountname : "" ;
+                var dbUserModifier = await UserManager.FindByIdAsync(mainCategory.ModifiedBy);
+                model.CreatedBy = dbUserModifier != null ? dbUserModifier.UserInformation.Accountname : "" ;
+
+                
             }
-            return View(mainCategory);
+            return View(model);
         }
 
         // POST: MainCategory/Delete/5

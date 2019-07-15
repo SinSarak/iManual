@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201907151651394_artical_category1.Designer.cs">
       <DependentUpon>201907151651394_artical_category1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907152344358_maincategory2.cs" />
+    <Compile Include="Migrations\201907152344358_maincategory2.Designer.cs">
+      <DependentUpon>201907152344358_maincategory2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomizeAuthorize.cs" />
@@ -205,6 +209,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\ViewModels\MainCategory\CreateMainCategoryModel.cs" />
+    <Compile Include="Models\ViewModels\MainCategory\DeleleMainCategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\MainCategory\EditMainCategoryModel.cs" />
+    <Compile Include="Models\ViewModels\MainCategory\EditMainCategoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907151651394_artical_category1.resx">
       <DependentUpon>201907151651394_artical_category1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907152344358_maincategory2.resx">
+      <DependentUpon>201907152344358_maincategory2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
