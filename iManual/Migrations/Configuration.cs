@@ -1,6 +1,7 @@
 namespace iManual.Migrations
 {
     using Models;
+    using Models.Domains;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -20,10 +21,14 @@ namespace iManual.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //context.Roles.AddOrUpdate(
-            //  p => p.Id,
-            //  new ApplicationRole { Name = "Admin" },
-            //  new ApplicationRole { Name = "Employee" }
+            context.Roles.AddOrUpdate(
+              p => p.Id,
+              new ApplicationRole { Name = "Admin" },
+              new ApplicationRole { Name = "Employee" }
+            );
+            //context.MainCategorys.AddOrUpdate(
+            //    p => p.Id,
+            //    new MainCategory { Name = "Main1",Active = true, CreatedBy = "UserId", CreatedDate = DateTime.Now, ModifiedDate = DateTime.Now }    
             //);
         }
     }

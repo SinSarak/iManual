@@ -10,17 +10,20 @@ using System.Web.Mvc;
 using iManual.Models;
 using iManual.Models.Domains;
 using Microsoft.AspNet.Identity.Owin;
+using iManual.Models.ViewModels.SubCategoryViewModels;
+using iManual.Helper;
+using Microsoft.AspNet.Identity;
 
 namespace iManual.Controllers
 {
-    public class SubCategoriesController : Controller
+    public class SubCategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationUserManager _userManager;
 
 
-        public SubCategoriesController() { }
-        public SubCategoriesController(ApplicationUserManager userManager)
+        public SubCategoryController() { }
+        public SubCategoryController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
         }
@@ -51,7 +54,7 @@ namespace iManual.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = await db.SubCategorys.FindAsync(id);
+            SubCategory subCategory = await db.SubCategorys.Include(p=>p.MainCategory).FirstOrDefaultAsync(p=>p.Id == id);
             if (subCategory == null)
             {
                 return HttpNotFound();
@@ -62,8 +65,9 @@ namespace iManual.Controllers
         // GET: SubCategories/Create
         public ActionResult Create()
         {
-            ViewBag.MainCategoryId = new SelectList(db.MainCategorys, "Id", "Name");
-            return View();
+            var model = new CreateSubCategoryViewModel();
+            model.MainCategorys = db.MainCategorys.OrderBy(p => p.Name).Where(p=>p.Active == true).ToList();
+            return View(model);
         }
 
         // POST: SubCategories/Create
@@ -71,17 +75,26 @@ namespace iManual.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Status,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,MainCategoryId")] SubCategory subCategory)
+        public async Task<ActionResult> Create(CreateSubCategoryModel subCategory)
         {
             if (ModelState.IsValid)
             {
-                db.SubCategorys.Add(subCategory);
+                var model = new SubCategory();
+                model.Name = subCategory.Name.TrimNullable();
+                model.MainCategoryId = subCategory.MainCategoryId;
+                model.CreatedBy = User.Identity.GetUserId();
+                model.CreatedDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
+                model.Active = true;
+
+                db.SubCategorys.Add(model);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MainCategoryId = new SelectList(db.MainCategorys, "Id", "Name", subCategory.MainCategoryId);
-            return View(subCategory);
+            var returnModel = new CreateSubCategoryViewModel();
+            returnModel.MainCategorys = db.MainCategorys.OrderBy(p => p.Name).Where(p => p.Active == true).ToList();
+            return View(returnModel);
         }
 
         // GET: SubCategories/Edit/5
@@ -96,8 +109,15 @@ namespace iManual.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MainCategoryId = new SelectList(db.MainCategorys, "Id", "Name", subCategory.MainCategoryId);
-            return View(subCategory);
+
+            var model = new EditSubCategoryViewModel();
+            model.Id = subCategory.Id;
+            model.Name = subCategory.Name;
+            model.Active = subCategory.Active;
+            model.MainCategorys = db.MainCategorys.OrderBy(p => p.Name).Where(p=>p.Active == true).ToList();
+            model.MainCategory =await db.MainCategorys.SingleOrDefaultAsync(p=>p.Id == subCategory.MainCategoryId);
+
+            return View(model);
         }
 
         // POST: SubCategories/Edit/5
@@ -105,16 +125,29 @@ namespace iManual.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Status,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,MainCategoryId")] SubCategory subCategory)
+        public async Task<ActionResult> Edit(EditSubCategoryModel subCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subCategory).State = EntityState.Modified;
+                var dbSubCategory = db.SubCategorys.SingleOrDefault(p=>p.Id == subCategory.Id);
+                dbSubCategory.Name = subCategory.Name.TrimNullable();
+                dbSubCategory.Active = subCategory.Active;
+                dbSubCategory.MainCategoryId = subCategory.MainCategoryId;
+                dbSubCategory.ModifiedBy = User.Identity.GetUserId();
+                dbSubCategory.ModifiedDate = DateTime.Now;
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.MainCategoryId = new SelectList(db.MainCategorys, "Id", "Name", subCategory.MainCategoryId);
-            return View(subCategory);
+
+            var model = new EditSubCategoryViewModel();
+            model.Id = subCategory.Id;
+            model.Name = subCategory.Name;
+            model.Active = subCategory.Active;
+            model.MainCategorys = db.MainCategorys.OrderBy(p => p.Name).Where(p => p.Active == true).ToList();
+            model.MainCategory = await db.MainCategorys.SingleOrDefaultAsync(p => p.Id == subCategory.MainCategoryId);
+
+            return View(model);
         }
 
         // GET: SubCategories/Delete/5
@@ -124,7 +157,7 @@ namespace iManual.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = await db.SubCategorys.FindAsync(id);
+            SubCategory subCategory = await db.SubCategorys.Include(p => p.MainCategory).FirstOrDefaultAsync(p => p.Id == id);
             if (subCategory == null)
             {
                 return HttpNotFound();
@@ -138,7 +171,7 @@ namespace iManual.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SubCategory subCategory = await db.SubCategorys.FindAsync(id);
-            db.SubCategorys.Remove(subCategory);
+            subCategory.Active = false;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

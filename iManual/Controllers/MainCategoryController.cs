@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using iManual.Models;
 using iManual.Models.Domains;
-using iManual.Models.ViewModels.MainCategory;
+using iManual.Models.ViewModels.MainCategoryViewModels;
 using iManual.Helper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
