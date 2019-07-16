@@ -21,6 +21,8 @@ namespace iManual.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationUserManager _userManager;
 
+
+        public MainCategoryController() { }
         public MainCategoryController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
@@ -168,7 +170,7 @@ namespace iManual.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             MainCategory mainCategory = await db.MainCategorys.FindAsync(id);
-            db.MainCategorys.Remove(mainCategory);
+            mainCategory.Active = false;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

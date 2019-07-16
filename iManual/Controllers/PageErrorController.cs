@@ -38,7 +38,7 @@ namespace iManual.Controllers
             return View();
         }
 
-        public ActionResult Error500()
+        public ActionResult Error500(object message)
         {
             return View();
         }

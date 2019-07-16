@@ -143,3 +143,6 @@ R:\iManual\iManual\obj\Debug\iManual.pdb
 R:\iManual\iManual\obj\Debug\iManual.Migrations.artical_category.resources
 R:\iManual\iManual\obj\Debug\iManual.Migrations.artical_category1.resources
 R:\iManual\iManual\obj\Debug\iManual.Migrations.maincategory2.resources
+D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category.resources
+D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category1.resources
+D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.maincategory2.resources
