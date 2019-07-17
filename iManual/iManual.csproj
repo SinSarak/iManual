@@ -181,6 +181,10 @@
     <Compile Include="Helper\HelperFunction.cs" />
     <Compile Include="Helper\HelperTester.cs" />
     <Compile Include="Helper\JsonNetResult.cs" />
+    <Compile Include="Migrations\201907171639399_subcategoryuserdatetype.cs" />
+    <Compile Include="Migrations\201907171639399_subcategoryuserdatetype.Designer.cs">
+      <DependentUpon>201907171639399_subcategoryuserdatetype.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomizeAuthorize.cs" />
@@ -194,6 +198,8 @@
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserInformation.cs" />
+    <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleViewModel.cs" />
+    <Compile Include="Models\ViewModels\ArticalViewModels\CreateSubCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\CreateMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\EditMainCategoryModel.cs" />
@@ -278,7 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\ViewModels\ArticalViewModels\" />
     <Folder Include="Views\PageError\" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +293,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907171639399_subcategoryuserdatetype.resx">
+      <DependentUpon>201907171639399_subcategoryuserdatetype.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

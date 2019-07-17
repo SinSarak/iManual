@@ -9,6 +9,10 @@ using System.Web;
 using System.Web.Mvc;
 using iManual.Models;
 using iManual.Models.Domains;
+using iManual.Models.ViewModels.ArticalViewModels;
+using iManual.Helper;
+using iManual.Models.EnumBase;
+using Microsoft.AspNet.Identity;
 
 namespace iManual.Controllers
 {
@@ -41,8 +45,9 @@ namespace iManual.Controllers
         // GET: Articles/Create
         public ActionResult Create()
         {
-            ViewBag.SubCategoryId = new SelectList(db.SubCategorys, "Id", "Name");
-            return View();
+            var model = new CreateArticleViewModel();
+            model.SubCategorys = db.SubCategorys.OrderBy(p => p.Name).Where(p => p.Active).ToList();
+            return View(model);
         }
 
         // POST: Articles/Create
@@ -50,11 +55,22 @@ namespace iManual.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description,Status,PublishStatus,SubCategoryId,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,UserId")] Article article)
+        public async Task<ActionResult> Create(CreateSubCategoryModel article)
         {
             if (ModelState.IsValid)
             {
-                db.Articles.Add(article);
+                var model = new Article();
+                model.Title = article.Title.TrimNullable();
+                model.Description = article.Description.TrimNullable();
+                model.SubCategoryId = article.SubCategoryId;
+                model.Status = (int)ArticleStatus.Active;
+                model.UserId = User.Identity.GetUserId();
+                model.PublishStatus = (int)ArticlePublishStatus.Done;
+                model.CreatedBy = User.Identity.GetUserId();
+                model.CreatedDate = DateTime.Now;
+                model.ModifiedDate = DateTime.Now;
+                
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

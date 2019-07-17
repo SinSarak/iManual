@@ -17,7 +17,7 @@ namespace iManual.Models.Domains
         public string CreatedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
         public SubCategory SubCategory { get; set; }

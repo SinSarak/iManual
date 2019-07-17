@@ -140,3 +140,6 @@ R:\iManual\iManual\obj\Debug\iManual.pdb
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category.resources
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category1.resources
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.maincategory2.resources
+R:\iManual\iManual\obj\Debug\iManual.csprojResolveAssemblyReference.cache
+R:\iManual\iManual\obj\Debug\iManual.Migrations.subcategoryuserdatetype.resources
+R:\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
