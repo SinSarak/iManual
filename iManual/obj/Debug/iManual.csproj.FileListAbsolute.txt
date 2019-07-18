@@ -135,7 +135,7 @@ R:\iManual\iManual\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 R:\iManual\iManual\obj\Debug\iManual.dll
 R:\iManual\iManual\obj\Debug\iManual.pdb
 R:\iManual\iManual\obj\Debug\iManual.csprojResolveAssemblyReference.cache
-R:\iManual\iManual\obj\Debug\iManual.Migrations.subcategoryuserdatetype.resources
-R:\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.safasf.resources
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
+R:\iManual\iManual\obj\Debug\iManual.Migrations.merge.resources
+R:\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache

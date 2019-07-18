@@ -6,6 +6,15 @@
 
 <h2>Create</h2>
 <link href="~/Scripts/Plugins/DropzoneJs/dropzone.css" rel="stylesheet" />
+<style>
+    .dropzone {
+        border: dashed 1.4px #2998c8;
+        background-color: #d7f3f8;
+    }
+    .dropzone .dz-preview .dz-progress {
+        opacity: 0 !important;
+    }
+</style>
 
 @using (Html.BeginForm()) 
 {
@@ -87,10 +96,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">File Content</label>
                     <div class="col-md-10">
-                        <form action="/file-upload"
+                        <form action="/ArticleContent/UploadContent"
                               class="dropzone"
-                              id="my-awesome-dropzone"></form>
-
+                              id="myAwesomeDropzone" method="post">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -110,6 +119,58 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/Plugins/DropzoneJs/dropzone.js"></script>
     <script>
+        var data = new FormData();
+
+        Dropzone.options.myAwesomeDropzone = {
+            init: function () {
+                this.on("addedfile", function (file) {
+                    var ext = file.name.split('.').pop();
+                    if (ext == "pdf") {
+                        $(file.previewElement).find(".dz-image img").attr("src", "/Content/WebImages/pdficon.png");
+                    }
+                });
+                this.on("success", function (file, response) { successUpload(response); });
+                this.on("maxfilesexceeded", function (file) {
+                    alert("No more files please!");
+                });
+            },
+            //autoProcessQueue: false,
+            addRemoveLinks: true,
+            dictDefaultMessage: "<strong>Drop files here or click to upload. </strong>",
+            acceptedFiles: "application/pdf",
+            maxFiles: 1,
+        };
+
+        $(".dz-remove").on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var imageId = $(this).parent().find(".dz-filename > span").text();
+
+            $.ajax({
+                url: "Your url here",
+                data: { imageId: imageId },
+                type: 'POST',
+                success: function (data) {
+                    if (data.NotificationType === "Error") {
+                        toastr.error(data.Message);
+                    } else {
+                        toastr.success(data.Message);
+                    }
+                },
+                error: function (data) {
+                    toastr.error(data.Message);
+                }
+            })
+
+        });
+
+        function successUpload(response)
+        {
+            alert(response);
+            console.log(response);
+        }
+
         $("#btnaddcontent").click(function () {
             $("#popContenteditor").modal();
         });

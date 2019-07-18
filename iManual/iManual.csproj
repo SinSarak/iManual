@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticleContentController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
@@ -181,9 +182,9 @@
     <Compile Include="Helper\HelperFunction.cs" />
     <Compile Include="Helper\HelperTester.cs" />
     <Compile Include="Helper\JsonNetResult.cs" />
-    <Compile Include="Migrations\201907181220320_safasf.cs" />
-    <Compile Include="Migrations\201907181220320_safasf.Designer.cs">
-      <DependentUpon>201907181220320_safasf.cs</DependentUpon>
+    <Compile Include="Migrations\201907181603087_merge.cs" />
+    <Compile Include="Migrations\201907181603087_merge.Designer.cs">
+      <DependentUpon>201907181603087_merge.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleViewModel.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateSubCategoryModel.cs" />
+    <Compile Include="Models\ViewModels\ArticleContentViewModels\ReturnArticleContentModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\CreateMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\EditMainCategoryModel.cs" />
@@ -304,6 +306,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\ArticleContents\" />
+    <Folder Include="Views\ArticleContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -314,8 +318,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907181220320_safasf.resx">
-      <DependentUpon>201907181220320_safasf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907181603087_merge.resx">
+      <DependentUpon>201907181603087_merge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
