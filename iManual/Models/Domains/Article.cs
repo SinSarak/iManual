@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,7 @@ namespace iManual.Models.Domains
         public DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public string UserId { get; set; }
+   
 
         public ApplicationUser User { get; set; }
         public SubCategory SubCategory { get; set; }

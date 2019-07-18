@@ -64,11 +64,8 @@ D:\Mine\Projects\iManual\iManual\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Mine\Projects\iManual\iManual\bin\Microsoft.Owin.Security.Google.xml
 D:\Mine\Projects\iManual\iManual\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Mine\Projects\iManual\iManual\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.csprojResolveAssemblyReference.cache
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.dll
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.pdb
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.firstmigration.resources
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
 R:\iManual\iManual\bin\roslyn\csc.exe
 R:\iManual\iManual\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 R:\iManual\iManual\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -137,9 +134,8 @@ R:\iManual\iManual\bin\Microsoft.Owin.Security.Twitter.xml
 R:\iManual\iManual\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 R:\iManual\iManual\obj\Debug\iManual.dll
 R:\iManual\iManual\obj\Debug\iManual.pdb
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category.resources
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.artical_category1.resources
-D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.maincategory2.resources
 R:\iManual\iManual\obj\Debug\iManual.csprojResolveAssemblyReference.cache
 R:\iManual\iManual\obj\Debug\iManual.Migrations.subcategoryuserdatetype.resources
 R:\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
+D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.safasf.resources
+D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache

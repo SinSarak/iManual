@@ -181,9 +181,9 @@
     <Compile Include="Helper\HelperFunction.cs" />
     <Compile Include="Helper\HelperTester.cs" />
     <Compile Include="Helper\JsonNetResult.cs" />
-    <Compile Include="Migrations\201907171639399_subcategoryuserdatetype.cs" />
-    <Compile Include="Migrations\201907171639399_subcategoryuserdatetype.Designer.cs">
-      <DependentUpon>201907171639399_subcategoryuserdatetype.cs</DependentUpon>
+    <Compile Include="Migrations\201907181220320_safasf.cs" />
+    <Compile Include="Migrations\201907181220320_safasf.Designer.cs">
+      <DependentUpon>201907181220320_safasf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -229,6 +229,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Plugins\DropzoneJs\basic.css" />
+    <Content Include="Scripts\Plugins\DropzoneJs\dropzone-amd-module.js" />
+    <Content Include="Scripts\Plugins\DropzoneJs\dropzone.css" />
+    <Content Include="Scripts\Plugins\DropzoneJs\dropzone.js" />
+    <Content Include="Scripts\Plugins\DropzoneJs\min\basic.min.css" />
+    <Content Include="Scripts\Plugins\DropzoneJs\min\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\Plugins\DropzoneJs\min\dropzone.min.css" />
+    <Content Include="Scripts\Plugins\DropzoneJs\min\dropzone.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -281,10 +289,21 @@
     <Content Include="Views\Article\Details.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\MainCategoriesa\Create.cshtml" />
+    <Content Include="Views\MainCategoriesa\Delete.cshtml" />
+    <Content Include="Views\MainCategoriesa\Details.cshtml" />
+    <Content Include="Views\MainCategoriesa\Edit.cshtml" />
+    <Content Include="Views\MainCategoriesa\Index.cshtml" />
+    <Content Include="Views\PageError\AccessDenied.cshtml" />
+    <Content Include="Views\PageError\EmptyPage.cshtml" />
+    <Content Include="Views\PageError\Error404.cshtml" />
+    <Content Include="Views\PageError\Error404_15.cshtml" />
+    <Content Include="Views\PageError\Error500.cshtml" />
+    <Content Include="Views\PageError\NotMatch.cshtml" />
+    <Content Include="Views\PageError\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PageError\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -295,8 +314,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907171639399_subcategoryuserdatetype.resx">
-      <DependentUpon>201907171639399_subcategoryuserdatetype.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907181220320_safasf.resx">
+      <DependentUpon>201907181220320_safasf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
