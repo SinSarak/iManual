@@ -13,6 +13,7 @@ using iManual.Models.ViewModels.ArticalViewModels;
 using iManual.Helper;
 using iManual.Models.EnumBase;
 using Microsoft.AspNet.Identity;
+using iManual.Models.ViewModels.ArticleContentViewModels;
 
 namespace iManual.Controllers
 {
@@ -55,7 +56,7 @@ namespace iManual.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateSubCategoryModel article)
+        public async Task<ActionResult> Create(CreateArticleModel article)
         {
             if (ModelState.IsValid)
             {
@@ -69,9 +70,28 @@ namespace iManual.Controllers
                 model.CreatedBy = User.Identity.GetUserId();
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
-                
 
+                db.Articles.Add(model);
                 await db.SaveChangesAsync();
+
+                var contents = article.GetArticleContents();
+                int i = 0;
+                foreach(var content in contents)
+                {
+                    var articleContent = new ArticleContent();
+                    articleContent.Title = content.Title;
+                    articleContent.Description = content.Title;
+                    articleContent.Active = true;
+                    articleContent.ArticleId = model.Id;
+                    articleContent.Order = i;
+                    articleContent.FileName = content.FileName;
+                    articleContent.FullPath = content.FullPath;
+                    articleContent.UploadedDate = DateTime.Now;
+                    i++;
+                    db.ArticleContents.Add(articleContent);
+                    await db.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index");
             }
 

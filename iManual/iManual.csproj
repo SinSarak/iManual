@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleContentController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -200,7 +201,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleViewModel.cs" />
-    <Compile Include="Models\ViewModels\ArticalViewModels\CreateSubCategoryModel.cs" />
+    <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleModel.cs" />
+    <Compile Include="Models\ViewModels\ArticleContentViewModels\CreateArticleContentwithArticleModel.cs" />
     <Compile Include="Models\ViewModels\ArticleContentViewModels\ReturnArticleContentModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\CreateMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
@@ -308,6 +310,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\ArticleContents\" />
     <Folder Include="Views\ArticleContent\" />
+    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

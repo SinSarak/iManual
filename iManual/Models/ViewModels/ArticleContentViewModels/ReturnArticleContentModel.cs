@@ -9,5 +9,6 @@ namespace iManual.Models.ViewModels.ArticleContentViewModels
     {
         public string filename { get; set; }
         public string path { get; set; }
+        public string tempid { get; set; }
     }
 }

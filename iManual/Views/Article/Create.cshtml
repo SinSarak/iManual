@@ -16,10 +16,9 @@
     }
 </style>
 
-@using (Html.BeginForm()) 
-{
+<form method="post" action="/Article/Create" id="frm">
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Article</h4>
         <hr />
@@ -27,7 +26,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Title</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" name="Title"/>
+                <input type="text" class="form-control" name="Title" />
             </div>
         </div>
 
@@ -51,11 +50,14 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" >Article Contents</label>
+            <label class="control-label col-md-2">Article Contents</label>
             <div class="col-md-8">
-                <ul class="list-group">
+                <ul class="list-group" id="listContents">
                     <li class="list-group-item active">Cras justo odio</li>
-                </ul>              
+                </ul>
+                <div class="invisible" id="listContentPost">
+
+                </div>
             </div>
             <div class="col-md-2">
                 <i class="glyphicon glyphicon-plus-sign" id="btnaddcontent"></i>
@@ -69,7 +71,8 @@
             </div>
         </div>
     </div>
-}
+    <input type="hidden" name="JsonContents"/>
+</form>
 
 <div class="modal" tabindex="-1" role="dialog" id="popContenteditor">
     <div class="modal-dialog" role="document">
@@ -84,27 +87,28 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Title</label>
                     <div class="col-md-10">
-                        <input type="text" name="Title" class="form-control"/>
+                        <input type="text" id="Title" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">Description</label>
                     <div class="col-md-10">
-                        <textarea name="Description" class="form-control" rows="5"></textarea>
+                        <textarea id="Description" class="form-control" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">File Content</label>
                     <div class="col-md-10">
-                        <form action="/ArticleContent/UploadContent"
-                              class="dropzone"
-                              id="myAwesomeDropzone" method="post">
+                        <form id="myAwesomeDropzone" dropzone="dropzoneConfig" class="dropzone" method="post">
                         </form>
+                        <input type="hidden" name="filepath"/>
+                        <input type="hidden" name="filename" />
+                        <input type="hidden" name="tempid" />
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnSaveContent">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -120,8 +124,10 @@
     <script src="~/Scripts/Plugins/DropzoneJs/dropzone.js"></script>
     <script>
         var data = new FormData();
+        var postList= [];
 
-        Dropzone.options.myAwesomeDropzone = {
+        Dropzone.autoDiscover = false;
+        myDropZone = new Dropzone( "#myAwesomeDropzone", {
             init: function () {
                 this.on("addedfile", function (file) {
                     var ext = file.name.split('.').pop();
@@ -139,7 +145,9 @@
             dictDefaultMessage: "<strong>Drop files here or click to upload. </strong>",
             acceptedFiles: "application/pdf",
             maxFiles: 1,
-        };
+            url: "/ArticleContent/UploadContent"
+            
+        });
 
         $(".dz-remove").on("click", function (e) {
             e.preventDefault();
@@ -167,9 +175,34 @@
 
         function successUpload(response)
         {
-            alert(response);
             console.log(response);
+            if (response.success != false) {
+                alert("Upload Completed");
+                $("[name='filepath']").val(response.response.path);
+                $("[name='filename']").val(response.response.filename);
+                $("[name='tempid']").val(response.response.tempid);
+            } else {
+                alert("Server Failed");
+            }
         }
+
+        $("#btnSaveContent").click(function () {
+            var listDisplay = $("#listContents");
+            var listPost = $("#listContentPost");
+
+            listDisplay.append("<li class='list-group-item' data-tempid='" + $("[name='tempid']").val() + "' >" + $("#Title").val() + "</li>");
+            listPost.append("<input type='hidden' data-ptempid='" + $("[name='tempid']").val() + "' name='Title' value='" + $("#Title").val() + "' />")
+                    .append("<input type='hidden' data-ptempid='" + $("[name='tempid']").val() + "' name='Description' value='" + $("#Description").val() + "' />")
+                    .append("<input type='hidden' data-ptempid='" + $("[name='tempid']").val() + "' name='FileName' value='" + $("[name='filename']").val() + "' />")
+                    .append("<input type='hidden' data-ptempid='" + $("[name='tempid']").val() + "' name='FullPath' value='" + $("[name='filepath']").val() + "' />");
+            postList.push({ 'Title': $("#Title").val(), 'Description': $("#Description").val(), 'FileName': $("[name='filename']").val(), 'FullPath': $("[name='filepath']").val() });
+            $("#popContenteditor").modal("hide");
+            myDropZone.removeAllFiles(true);
+        });
+        $("#frm").submit(function () {
+            var json = JSON.stringify( postList);
+            $('[name=JsonContents]').val(json);
+        });
 
         $("#btnaddcontent").click(function () {
             $("#popContenteditor").modal();

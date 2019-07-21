@@ -48,6 +48,7 @@ namespace iManual.Controllers
                     var model = new ReturnArticleContentModel();
                     model.filename = filename;
                     model.path = "/Uploads/ArticleContents/" + filename;
+                    model.tempid = datetime;
 
                     var ServerSavePath = Path.Combine(Server.MapPath("~/Uploads/ArticleContents/") + filename);
                     //Save file to server folder  
