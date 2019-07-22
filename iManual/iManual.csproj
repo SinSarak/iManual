@@ -204,6 +204,7 @@
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleModel.cs" />
     <Compile Include="Models\ViewModels\ArticleContentViewModels\CreateArticleContentwithArticleModel.cs" />
     <Compile Include="Models\ViewModels\ArticleContentViewModels\ReturnArticleContentModel.cs" />
+    <Compile Include="Models\ViewModels\EmployeeViewModels\ShowEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\CreateMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\EditMainCategoryModel.cs" />
@@ -305,12 +306,12 @@
     <Content Include="Views\PageError\Error500.cshtml" />
     <Content Include="Views\PageError\NotMatch.cshtml" />
     <Content Include="Views\PageError\Unauthorized.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\ArticleContents\" />
     <Folder Include="Views\ArticleContent\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
