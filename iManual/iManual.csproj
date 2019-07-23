@@ -204,6 +204,7 @@
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleModel.cs" />
     <Compile Include="Models\ViewModels\ArticleContentViewModels\CreateArticleContentwithArticleModel.cs" />
     <Compile Include="Models\ViewModels\ArticleContentViewModels\ReturnArticleContentModel.cs" />
+    <Compile Include="Models\ViewModels\EmployeeViewModels\ShowArticleViewModel.cs" />
     <Compile Include="Models\ViewModels\EmployeeViewModels\ShowEmployeeViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\CreateMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
@@ -307,6 +308,8 @@
     <Content Include="Views\PageError\NotMatch.cshtml" />
     <Content Include="Views\PageError\Unauthorized.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\testing.cshtml" />
+    <Content Include="Views\Employee\ArticleView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

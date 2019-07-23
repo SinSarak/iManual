@@ -1,11 +1,9 @@
-﻿@model iManual.Models.ViewModels.EmployeeViewModels.ShowEmployeeViewModel
+﻿
 @{
-    ViewBag.Title = "Index";
-    var CountSub = 0;
-    var Count = 0;
+    ViewBag.Title = "testing";
 }
 <style>
-/* MENU-LEFT
+    /* MENU-LEFT
 -------------------------- */
 /* layout */
 #left ul.nav {
@@ -169,26 +167,25 @@
     color: #fff!important;
 }
 </style>
-<h2>Index</h2>
-
+<h2>testing</h2>
 
 <div class="container">
     <div class="row">
         <div id="left" class="span3">
             <ul id="menu-group-1" class="nav menu">
-                @*<li class="item-1 deeper parent">
+                <li class="item-1 deeper parent active">
                     <a class="" href="#">
-                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-1" class="sign"><i class="icon-plus icon-white"></i></span>
+                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-1" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                         <span class="lbl">Menu Group i</span>
                     </a>
                     <ul class="children nav-child unstyled small collapse" id="sub-item-1">
                         <li class="item-2 deeper parent active">
                             <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-2" class="sign"><i class="icon-plus icon-white"></i></span>
+                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-2" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                                 <span class="lbl">Menu 1</span>
                             </a>
                             <ul class="children nav-child unstyled small collapse" id="sub-item-2">
-                                <li class="item-3">
+                                <li class="item-3 current active">
                                     <a class="" href="#">
                                         <span class="sign"><i class="icon-play"></i></span>
                                         <span class="lbl">Menu 1.1</span> (current menu)
@@ -204,7 +201,7 @@
                         </li>
                         <li class="item-5 deeper parent">
                             <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-5" class="sign"><i class="icon-plus icon-white"></i></span>
+                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-5" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                                 <span class="lbl">Menu 2</span>
                             </a>
                             <ul class="children nav-child unstyled small collapse" id="sub-item-5">
@@ -223,75 +220,16 @@
                             </ul>
                         </li>
                     </ul>
-                </li>*@
-                @foreach (var main in Model.MainCategorys)
-                {
-                    <li class="item-@Count deeper parent">
-                        <a class="" href="#">
-                            <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-@CountSub" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
-                            <span class="lbl">@main.Name</span>
-                        </a>
-                        
-                        @{Count++;}
-                        <ul class="children nav-child unstyled small collapse" id="sub-item-@CountSub">
-                            @foreach (var sub in Model.SubCategorys.Where(p=>p.MainCategoryId == main.Id).ToList())
-                            {
-
-                                <li class="item-@Count deeper parent active">
-                                    <a class="" href="#">
-
-                                        @{CountSub++;}
-                                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-@CountSub" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
-                                        <span class="lbl">@sub.Name</span>
-                                    </a>
-                                    <ul class="children nav-child unstyled small collapse" id="sub-item-@CountSub">
-                                        @foreach (var article in Model.Articles.Where(p=>p.SubCategoryId == sub.Id).ToList())
-                                        {
-                                            Count = Count + 1;
-                                            <li class="item-@Count">
-                                                <a class="" href="/Employee/ArticleView/@article.Id" target="_blank">
-                                                    <span class="sign"><i class="icon-play"></i></span>
-                                                    <span class="lbl">@article.Title</span>
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                </li>
-                                @*<li class="item-5 deeper parent">
+                </li>
+                <li class="item-8 deeper parent">
                     <a class="" href="#">
-                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-5" class="sign"><i class="icon-plus icon-white"></i></span>
-                        <span class="lbl">Menu 2</span>
-                    </a>
-                    <ul class="children nav-child unstyled small collapse" id="sub-item-5">
-                        <li class="item-6">
-                            <a class="" href="#">
-                                <span class="sign"><i class="icon-play"></i></span>
-                                <span class="lbl">Menu 2.1</span>
-                            </a>
-                        </li>
-                        <li class="item-7">
-                            <a class="" href="#">
-                                <span class="sign"><i class="icon-play"></i></span>
-                                <span class="lbl">Menu 2.2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>*@
-                         }
-                        </ul> 
-                    </li>
-                    Count++;
-                    CountSub++;
-                 }
-                @*<li class="item-8 deeper parent">
-                    <a class="" href="#">
-                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-8" class="sign"><i class="icon-plus icon-white"></i></span>
+                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-8" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                         <span class="lbl">Menu Group ii</span>
                     </a>
                     <ul class="children nav-child unstyled small collapse" id="sub-item-8">
                         <li class="item-9 deeper parent">
                             <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-9" class="sign"><i class="icon-plus icon-white"></i></span>
+                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-9" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                                 <span class="lbl">Menu 1</span>
                             </a>
                             <ul class="children nav-child unstyled small collapse" id="sub-item-9">
@@ -311,7 +249,7 @@
                         </li>
                         <li class="item-12 deeper parent">
                             <a class="" href="#">
-                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-12" class="sign"><i class="icon-plus icon-white"></i></span>
+                                <span data-toggle="collapse" data-parent="#menu-group-1" href="#sub-item-12" class="sign"><i class="glyphicon glyphicon-plus"></i></span>
                                 <span class="lbl">Menu 2</span>
                             </a>
                             <ul class="children nav-child unstyled small collapse" id="sub-item-12">
@@ -330,14 +268,23 @@
                             </ul>
                         </li>
                     </ul>
-                </li>*@
+                </li>
             </ul>
         </div>
     </div>
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
+<script>
+    !function ($) {
+
+        // Le left-menu sign
+        /* for older jquery version
+        $('#left ul.nav li.parent > a > span.sign').click(function () {
+            $(this).find('i:first').toggleClass("icon-minus");
+        }); */
+
         $(document).on("click", "#left ul.nav li.parent > a > span.sign", function () {
             $(this).find('i:first').toggleClass("glyphicon-minus");
         });
@@ -345,7 +292,7 @@
         // Open Le current menu
         $("#left ul.nav li.parent.active > a > span.sign").find('i:first').addClass("glyphicon-minus");
         $("#left ul.nav li.current").parents('ul.children').addClass("in");
-    </script>
-}
 
-
+    }(window.jQuery);
+</script>
+    }

@@ -1,0 +1,25 @@
+﻿@model iManual.Models.ViewModels.EmployeeViewModels.ShowArticleViewModel
+@{
+    ViewBag.Title = "ArticleView";
+}
+
+<h2>Article:  @Model.Article.Title</h2>
+<h4>SubCategory:  @Model.Article.SubCategory.Name</h4>
+<h6>Owner:  @Model.Article.User.UserInformation.Accountname</h6>
+<h6>Created Date:  @Model.Article.CreatedDate</h6>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Description:</h4><h5>@Model.Article.Description</h5>
+        <label>Content</label>
+        <br />
+        @foreach (var content in Model.ArticleContent)
+        {
+            <a href="/Employee/ViewPDF/@content.Id" target="_blank">
+                @content.Title
+                <br />
+                @content.Description
+            </a>
+        }
+    </div>
+</div>
+
