@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleContentController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ClaimController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
@@ -200,7 +201,9 @@
     <Compile Include="Models\EnumBase\EnumBase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IdentityExtensions.cs" />
+    <Compile Include="Models\MainClaim.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SubClaim.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleViewModel.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleModel.cs" />
@@ -4693,6 +4696,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\ArticleContents\" />
     <Folder Include="Views\ArticleContent\" />
+    <Folder Include="Views\Claim\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
