@@ -6,6 +6,8 @@ namespace iManual.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using iManual.Helper;
+    using Models.EnumBase;
 
     internal sealed class Configuration : DbMigrationsConfiguration<iManual.Models.ApplicationDbContext>
     {
@@ -26,6 +28,10 @@ namespace iManual.Migrations
               new ApplicationRole { Name = "Admin" },
               new ApplicationRole { Name = "Employee" }
             );
+            //context.MainClaims.AddOrUpdate(
+            //  p => p.Id,
+            //  new MainClaim { Name = GlobalVariable.DefaultMainClaim , Active = true }
+            //);
             //context.MainCategorys.AddOrUpdate(
             //    p => p.Id,
             //    new MainCategory { Name = "Main1",Active = true, CreatedBy = "UserId", CreatedDate = DateTime.Now, ModifiedDate = DateTime.Now }    

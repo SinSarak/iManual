@@ -137,5 +137,5 @@ R:\iManual\iManual\obj\Debug\iManual.pdb
 R:\iManual\iManual\obj\Debug\iManual.csprojResolveAssemblyReference.cache
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.Migrations.safasf.resources
 D:\Mine\Projects\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache
-R:\iManual\iManual\obj\Debug\iManual.Migrations.merge.resources
+R:\iManual\iManual\obj\Debug\iManual.Migrations.mainclaim.resources
 R:\iManual\iManual\obj\Debug\iManual.csproj.GenerateResource.Cache

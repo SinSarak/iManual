@@ -38,6 +38,8 @@ namespace iManual.Controllers
                 _userManager = value;
             }
         }
+
+        [Authorize(Roles = "Admin,MAINCATEGORY_ALL")]
         // GET: MainCategory
         public async Task<ActionResult> Index()
         {
@@ -59,6 +61,7 @@ namespace iManual.Controllers
             return View(mainCategory);
         }
 
+        [Authorize(Roles = "Admin,MAINCATEGORY_ALL,MAINCATEGORY_CREATE")]
         // GET: MainCategory/Create
         public ActionResult Create()
         {

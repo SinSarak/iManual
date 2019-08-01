@@ -45,5 +45,6 @@ namespace iManual.Models
         public DbSet<SubCategory> SubCategorys { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleContent> ArticleContents { get; set; }
+        public DbSet<MainClaim> MainClaims { get; set; }
     }
 }

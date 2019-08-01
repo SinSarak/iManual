@@ -176,6 +176,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
+    <Compile Include="Controllers\MainClaimController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageErrorController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
@@ -186,9 +187,9 @@
     <Compile Include="Helper\HelperFunction.cs" />
     <Compile Include="Helper\HelperTester.cs" />
     <Compile Include="Helper\JsonNetResult.cs" />
-    <Compile Include="Migrations\201907181603087_merge.cs" />
-    <Compile Include="Migrations\201907181603087_merge.Designer.cs">
-      <DependentUpon>201907181603087_merge.cs</DependentUpon>
+    <Compile Include="Migrations\201908011749133_mainclaim.cs" />
+    <Compile Include="Migrations\201908011749133_mainclaim.Designer.cs">
+      <DependentUpon>201908011749133_mainclaim.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -203,7 +204,6 @@
     <Compile Include="Models\IdentityExtensions.cs" />
     <Compile Include="Models\MainClaim.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SubClaim.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleViewModel.cs" />
     <Compile Include="Models\ViewModels\ArticalViewModels\CreateArticleModel.cs" />
@@ -215,6 +215,8 @@
     <Compile Include="Models\ViewModels\MainCategoryViewModels\DeleleMainCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\EditMainCategoryModel.cs" />
     <Compile Include="Models\ViewModels\MainCategoryViewModels\EditMainCategoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\MainClaimViewModels\CreateMainClaimModel.cs" />
+    <Compile Include="Models\ViewModels\MainClaimViewModels\CreateMainClaimViewModel.cs" />
     <Compile Include="Models\ViewModels\SubCategoryViewModels\CreateSubCategoryModel.cs" />
     <Compile Include="Models\ViewModels\SubCategoryViewModels\CreateSubCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\SubCategoryViewModels\EditSubCategoryModel.cs" />
@@ -4691,6 +4693,11 @@
     <Content Include="Scripts\Plugins\validator\.gitignore" />
     <Content Include="Scripts\Plugins\validator\README.md" />
     <Content Include="Scripts\Plugins\validator\validator.jquery.json" />
+    <Content Include="Views\MainClaim\Create.cshtml" />
+    <Content Include="Views\MainClaim\Delete.cshtml" />
+    <Content Include="Views\MainClaim\Details.cshtml" />
+    <Content Include="Views\MainClaim\Edit.cshtml" />
+    <Content Include="Views\MainClaim\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4707,15 +4714,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907181603087_merge.resx">
-      <DependentUpon>201907181603087_merge.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\Plugins\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908011749133_mainclaim.resx">
+      <DependentUpon>201908011749133_mainclaim.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

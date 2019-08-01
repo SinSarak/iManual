@@ -5,7 +5,8 @@ using System.Web;
 
 namespace iManual.Models.EnumBase
 {
-    
+
+
     public enum UserStatus
     {
         Deactive = 0,
@@ -23,6 +24,11 @@ namespace iManual.Models.EnumBase
     {
         Draft = 0,
         Done = 1
+    }
+
+    public static class GlobalVariable
+    {
+        public const string DefaultMainClaim = "Default MainClaim";
     }
     
 }
